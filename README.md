@@ -1,4 +1,4 @@
-<h2 style="text-align:center">This REST API was developed by <b>Rapheal Djane Kotei</b> for Adaptive Computer Solutions</h2>
+<h3><centre>This REST API was developed by <b>Rapheal Djane Kotei</b> for Adaptive Computer Solutions</centre></h3>
 
 <hr>
 
