@@ -1,3 +1,5 @@
+This REST API was developed by Rapheal Djane Kotei for Adaptive Computer Solutions
+
 ## Guildelines to Launch the App
 
 1. Git Clone the source codes from the repository
