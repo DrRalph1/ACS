@@ -1,4 +1,4 @@
-## Guildelines to Lauch the App
+## Guildelines to Launch the App
 
 1. Git Clone the source codes from the repository
 
