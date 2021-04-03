@@ -1,6 +1,6 @@
 This REST API was developed by <b>Rapheal Djane Kotei</b> for Adaptive Computer Solutions
 
-<br>
+<hr>
 
 ## Guildelines to Launch the App
 
