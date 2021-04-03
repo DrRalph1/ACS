@@ -1,7 +1,3 @@
-<h3><centre>This REST API was developed by <b>Rapheal Djane Kotei</b> for Adaptive Computer Solutions</centre></h3>
-
-<hr>
-
 ## Guildelines to Launch the App
 
 1. Git Clone the source codes from the repository
@@ -36,3 +32,9 @@
 3. Enter http://127.0.0.1:8000/api/getGrossSalaryANDAdditionalDetails in the URL section
 
 4. Click on send to return the corresponding gross salary and additional details
+
+
+<br>
+<hr>
+NB: <h3>This REST API was developed by <b>Rapheal Djane Kotei</b> for Adaptive Computer Solutions</h3>
+<hr>
