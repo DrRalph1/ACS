@@ -166,7 +166,7 @@ class JobOfferDetailsController extends Controller
                 $employee_pension_amt = $employee_pension_cont_amt + $employer_pension_contribution;
                 
                 // Gross Salary Computation
-                $gross_salary = $basic_salary + $total_allowance_amounts;
+                $gross_salary = $basic_salary + $allowances;
 
                 // Store the young lady's desired net salary, allowances and additional details
                 $jobOfferDetails = new JobOfferDetails();
