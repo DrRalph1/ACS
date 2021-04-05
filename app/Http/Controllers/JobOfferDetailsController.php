@@ -64,13 +64,11 @@ class JobOfferDetailsController extends Controller
 
                 // Computing paye tax using net salary
                 if($net_salary <= 319){
-
                     // chargeable income for the fist 319
                     $first_319 = 0;
                     $total_paye_tax = $first_319;
 
                 } else if ($net_salary <= 414){
-
                     // chargeable income for the fist 319
                     $first_319 = 0;
                     // chargeable income for the next 100
@@ -81,7 +79,6 @@ class JobOfferDetailsController extends Controller
                     $total_paye_tax = $first_319 + $next_100;
 
                 } else if ($net_salary <= 522){
-
                     // chargeable income for the fist 319
                     $first_319 = 0;
                     // chargeable income for the next 100
@@ -95,7 +92,6 @@ class JobOfferDetailsController extends Controller
                     $total_paye_tax = $first_319 + $next_100 + $next_120;
 
                 } else if ($net_salary <= 2997){
-
                     // chargeable income for the fist 319
                     $first_319 = 0;
                     // chargeable income for the next 100
@@ -168,9 +164,6 @@ class JobOfferDetailsController extends Controller
 
                 // Employee Pension Amount Computation
                 $employee_pension_amt = $employee_pension_cont_amt + $employer_pension_contribution;
-
-                // Total Allowance Amount
-                $total_allowance_amounts = $allowances;
                 
                 // Gross Salary Computation
                 $gross_salary = $basic_salary + $total_allowance_amounts;
