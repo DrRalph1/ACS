@@ -100,7 +100,7 @@ class JobOfferDetailsController extends Controller
                     // chargeable income for the next 120
                     $chargeable_income_next_120 = 120;
                     $next_120 = 0.1 * $chargeable_income_next_120;
-                    // chargeable income for the next 3000
+                    // chargeable income for the next 3,000
                     $chargeable_income_next_3000 = (100 / 82.5) * ($net_salary - 522);
                     $next_3000 = 0.175 * $chargeable_income_next_3000;
 
@@ -116,7 +116,7 @@ class JobOfferDetailsController extends Controller
                     // chargeable income for the next 120
                     $chargeable_income_next_120 = 120;
                     $next_120 = 0.1 * $chargeable_income_next_120;
-                    // chargeable income for the next 3000
+                    // chargeable income for the next 3,000
                     $chargeable_income_next_3000 = 3000;
                     $next_3000 = 0.175 * $chargeable_income_next_3000;
                     // chargeable income for the next 16,461
@@ -136,13 +136,13 @@ class JobOfferDetailsController extends Controller
                     // chargeable income for the next 120
                     $chargeable_income_next_120 = 120;
                     $next_120 = 0.1 * $chargeable_income_next_120;
-                    // chargeable income for the next 3000
+                    // chargeable income for the next 3,000
                     $chargeable_income_next_3000 = 3000;
                     $next_3000 = 0.175 * $chargeable_income_next_3000;
                     // chargeable income for the next 16,461
                     $chargeable_income_next_16461 = 16461;
                     $next_16461 = 0.25 * $chargeable_income_next_16461;
-                    // chargeable income for the next 16,461
+                    // chargeable income exceeding 20,000
                     $chargeable_income_exceeding_20000 = (100 / 70) * ($net_salary - 15342.75);
                     $exceeding_20000 = 0.3 * $chargeable_income_exceeding_20000;
 
