@@ -18,4 +18,4 @@ use Illuminate\Support\Facades\Route;
 Route::post('/sendNetSalaryANDAllowances', 'JobOfferDetailsController@store');
 
 // The REST API that returns the corresponding gross salary and additional details (Basic Salary, allowances, Total PAYE Tax, Employee Pension Contribution Amount and Employer Pension amount)
-Route::get('/getGrossSalaryANDAdditionalDetails', 'JobOfferDetailsController@index');
+Route::get('/returnGrossSalaryANDAdditionalDetails', 'JobOfferDetailsController@index');

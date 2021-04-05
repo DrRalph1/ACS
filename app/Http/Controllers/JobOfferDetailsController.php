@@ -44,38 +44,45 @@ class JobOfferDetailsController extends Controller
      */
     public function store(Request $request)
     {
-        // Get input from young lady (net salary and desired allowances)
+        // Request Input from young lady
         $input = $request->input();
 
         // Get Net Salary from the young lady
         $net_salary = $input['net_salary'];
 
-        // Get Allowances from the young lady
+        // Get Allowance from the young lady
         $allowances = $input['allowances'];
 
-        // Get Total Payee tax
-        $total_paye_tax = 0;
-        $taxableAMT = $net_salary + $allowances;
-
-        // Get Gross Salary
-        $gross_salary = 0;
-
-        // Get Employee Pension Contribution Amount
-        $emp_pension_cont_amt = 0;
-
-        // Get Employee Pension Amount
-        $emp_pension_amt = 0;
-
-        // Get Basic Salary
+        // Basic Salary Computation
         $basic_salary = 0;
 
-        // Get Total Allowance Amounts
+        // Taxable Income Computation
+        $taxableINCOME = $basic_salary + $allowances;
+
+        // Employee Pension Contribution Amount Computation
+        $emp_pension_cont_amt = 0;
+
+        // Total Payee Tax Computation
+        $total_paye_tax = 0;
+        $taxableAMNT = $taxableINCOME - $emp_pension_cont_amt;
+
+        // Net Salary Computation
+        $net_salary = ($net_salary + $allowances) - $total_paye_tax;
+
+        // Gross Salary Computation
+        $gross_salary = 0;
+
+        // Employee Pension Amount Computation
+        $emp_pension_amt = 0;
+
+        // Total Allowance Amounts Computation
         $total_allowance_amounts = 0;
 
         // Store the young lady's desired net salary and allowances
         $jobOfferDetails = new JobOfferDetails();
+        $jobOfferDetails->basic_salary = $basic_salary;
         $jobOfferDetails->net_salary = $net_salary;
-        $jobOfferDetails->allowances = $total_allowance_amounts;
+        $jobOfferDetails->allowances = $allowances;
         $jobOfferDetails->total_paye_tax = $total_paye_tax;
         $jobOfferDetails->gross_salary = $gross_salary;
         $jobOfferDetails->emp_pension_cont_amt = $emp_pension_cont_amt;

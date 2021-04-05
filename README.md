@@ -29,7 +29,7 @@
 
 2. Switch the method to <b>GET</b>
 
-3. Enter http://127.0.0.1:8000/api/getGrossSalaryANDAdditionalDetails in the URL section
+3. Enter http://127.0.0.1:8000/api/returnGrossSalaryANDAdditionalDetails in the URL section
 
 4. Click on send to return the corresponding gross salary and additional details
 

@@ -20,14 +20,14 @@
             }
             .center {
                 margin: auto;
-                width: 60%;
+                width: 90%;
                 text-align:center;
                 padding: 5px;
                 }
         </style>
     </head>
     <body class="center">
-        <h1>This REST API was developed by Rapheal Djane Kotei for Adaptive Computer Solutions</h1>
+        <h1>This REST API was proudly developed by Mr. Rapheal Djane Kotei for Adaptive Computer Solutions (ACS)</h1>
     
     <p style="font-size: 20px; text-align: left !important;">
         <br>
@@ -54,7 +54,7 @@
 
         <br><br>2. Switch the method to <b>GET</b>
 
-        <br><br>3. Enter <b>http://127.0.0.1:8000/api/getGrossSalaryANDAdditionalDetails</b> in the URL section
+        <br><br>3. Enter <b>http://127.0.0.1:8000/api/returnGrossSalaryANDAdditionalDetails</b> in the URL section
 
         <br><br>4. Click on send to return the corresponding gross salary and additional details
 
