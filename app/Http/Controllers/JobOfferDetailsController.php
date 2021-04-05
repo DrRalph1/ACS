@@ -56,7 +56,7 @@ class JobOfferDetailsController extends Controller
         // check if the user entered the net salary and / or allowances
         if(isset($net_salary) && isset($allowances)){
 
-            // check if user entered a numeric value for the net salary and / or allowances
+            // check if user entered numeric value(s) ONLY for the net salary and / or allowances
             if((preg_match('/^-?(?:\d+|\d*\.\d+)$/', $net_salary)) && (preg_match('/^-?(?:\d+|\d*\.\d+)$/', $allowances))){
 
                 // Basic Salary Computation 
