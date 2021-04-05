@@ -20,8 +20,8 @@ class CreateJobOfferDetailsTable extends Migration
             $table->float('net_salary');
             $table->float('total_paye_tax')->nullable();
             $table->float('gross_salary')->nullable();
-            $table->float('emp_pension_cont_amt')->nullable();
-            $table->float('emp_pension_amt')->nullable();
+            $table->float('employee_pension_cont_amt')->nullable();
+            $table->float('employee_pension_amt')->nullable();
             $table->timestamps();
         });
     }

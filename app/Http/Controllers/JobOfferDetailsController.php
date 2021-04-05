@@ -59,30 +59,121 @@ class JobOfferDetailsController extends Controller
             // check if user entered numeric value(s) ONLY for the net salary and / or allowances
             if((preg_match('/^-?(?:\d+|\d*\.\d+)$/', $net_salary)) && (preg_match('/^-?(?:\d+|\d*\.\d+)$/', $allowances))){
 
-                // Basic Salary Computation 
-                $basic_salary = 0;
+                // Initialize total paye tax variable
+                $total_paye_tax = 0;
+
+                // Computing paye tax using net salary
+                if($net_salary <= 319){
+
+                    // chargeable income for the fist 319
+                    $first_319 = 0;
+                    $total_paye_tax = $first_319;
+
+                } else if ($net_salary <= 414){
+
+                    // chargeable income for the fist 319
+                    $first_319 = 0;
+                    // chargeable income for the next 100
+                    $chargeable_income_next_100 = (100 / 95) * ($net_salary - 319);
+                    $next_100 = 0.05 * $chargeable_income_next_100;
+
+                    // compute the total paye tax
+                    $total_paye_tax = $first_319 + $next_100;
+
+                } else if ($net_salary <= 522){
+
+                    // chargeable income for the fist 319
+                    $first_319 = 0;
+                    // chargeable income for the next 100
+                    $chargeable_income_next_100 = 100;
+                    $next_100 = 0.05 * $chargeable_income_next_100;
+                    // chargeable income for the next 120
+                    $chargeable_income_next_120 = (100 / 90) * ($net_salary - 414);
+                    $next_120 = 0.1 * $chargeable_income_next_120;
+
+                    // compute the total paye tax
+                    $total_paye_tax = $first_319 + $next_100 + $next_120;
+
+                } else if ($net_salary <= 2997){
+
+                    // chargeable income for the fist 319
+                    $first_319 = 0;
+                    // chargeable income for the next 100
+                    $chargeable_income_next_100 = 100;
+                    $next_100 = 0.05 * $chargeable_income_next_100;
+                    // chargeable income for the next 120
+                    $chargeable_income_next_120 = 120;
+                    $next_120 = 0.1 * $chargeable_income_next_120;
+                    // chargeable income for the next 3000
+                    $chargeable_income_next_3000 = (100 / 82.5) * ($net_salary - 522);
+                    $next_3000 = 0.175 * $chargeable_income_next_3000;
+
+                    // compute the total paye tax
+                    $total_paye_tax = $first_319 + $next_100 + $next_120 + $next_3000;
+
+                } else if ($net_salary < 15342.75){
+                    // chargeable income for the fist 319
+                    $first_319 = 0;
+                    // chargeable income for the next 100
+                    $chargeable_income_next_100 = 100;
+                    $next_100 = 0.05 * $chargeable_income_next_100;
+                    // chargeable income for the next 120
+                    $chargeable_income_next_120 = 120;
+                    $next_120 = 0.1 * $chargeable_income_next_120;
+                    // chargeable income for the next 3000
+                    $chargeable_income_next_3000 = 3000;
+                    $next_3000 = 0.175 * $chargeable_income_next_3000;
+                    // chargeable income for the next 16,461
+                    $chargeable_income_next_16461 = (100 / 75) * ($net_salary - 2997);
+                    $next_16461 = 0.25 * $chargeable_income_next_16461;
+
+                    // compute the total paye tax
+                    $total_paye_tax = $first_319 + $next_100 + $next_120 + $next_3000 + $next_16461;
+                }
+                
+                else if ($net_salary > 15342.75){
+                    // chargeable income for the fist 319
+                    $first_319 = 0;
+                    // chargeable income for the next 100
+                    $chargeable_income_next_100 = 100;
+                    $next_100 = 0.05 * $chargeable_income_next_100;
+                    // chargeable income for the next 120
+                    $chargeable_income_next_120 = 120;
+                    $next_120 = 0.1 * $chargeable_income_next_120;
+                    // chargeable income for the next 3000
+                    $chargeable_income_next_3000 = 3000;
+                    $next_3000 = 0.175 * $chargeable_income_next_3000;
+                    // chargeable income for the next 16,461
+                    $chargeable_income_next_16461 = 16461;
+                    $next_16461 = 0.25 * $chargeable_income_next_16461;
+                    // chargeable income for the next 16,461
+                    $chargeable_income_exceeding_20000 = (100 / 70) * ($net_salary - 15342.75);
+                    $exceeding_20000 = 0.3 * $chargeable_income_exceeding_20000;
+
+                    // compute the total paye tax
+                    $total_paye_tax = $first_319 + $next_100 + $next_120 + $next_3000 + $next_16461 + $exceeding_20000;
+                }
 
                 // Taxable Income Computation
-                $taxableINCOME = $basic_salary + $allowances;
+                $taxableIncome = $total_paye_tax + $net_salary;
+
+                // Employee contribution for tier two and tier three
+                $basic_salary = ($taxableIncome - $allowances) * (100 / 89.5);
 
                 // Employee Pension Contribution Amount Computation
-                $emp_pension_cont_amt = 0;
+                $employee_pension_cont_amt = 0.105 * $basic_salary;
 
-                // Total Payee Tax Computation
-                $total_paye_tax = 0;
-                $taxableAMNT = $taxableINCOME - $emp_pension_cont_amt;
-
-                // Net Salary Computation
-                $net_salary = $net_salary;
-
-                // Gross Salary Computation
-                $gross_salary = 0;
+                // Employer Pension Contribution
+                $employer_pension_contribution = 0.18 * $basic_salary;
 
                 // Employee Pension Amount Computation
-                $emp_pension_amt = 0;
+                $employee_pension_amt = $employee_pension_cont_amt + $employer_pension_contribution;
 
-                // Total Allowance Amounts Computation
-                $total_allowance_amounts = 0;
+                // Total Allowance Amount
+                $total_allowance_amounts = $allowances;
+                
+                // Gross Salary Computation
+                $gross_salary = $basic_salary + $total_allowance_amounts;
 
                 // Store the young lady's desired net salary, allowances and additional details
                 $jobOfferDetails = new JobOfferDetails();
@@ -91,8 +182,8 @@ class JobOfferDetailsController extends Controller
                 $jobOfferDetails->allowances = $allowances;
                 $jobOfferDetails->total_paye_tax = $total_paye_tax;
                 $jobOfferDetails->gross_salary = $gross_salary;
-                $jobOfferDetails->emp_pension_cont_amt = $emp_pension_cont_amt;
-                $jobOfferDetails->emp_pension_amt = $emp_pension_amt;
+                $jobOfferDetails->employee_pension_cont_amt = $employee_pension_cont_amt;
+                $jobOfferDetails->employee_pension_amt = $employee_pension_amt;
 
                 // Check if the data has been stored successfully
                 if ($jobOfferDetails->save()) {

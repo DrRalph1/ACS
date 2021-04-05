@@ -21,7 +21,7 @@ class JobOfferDetails extends Model
         'allowances',
         'gross_salary',
         'total_paye_tax',
-        'emp_pension_cont_amt',
-        'emp_pension_amt',
+        'employee_pension_cont_amt',
+        'employee_pension_amt',
     ];
 }
