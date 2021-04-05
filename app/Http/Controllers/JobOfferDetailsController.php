@@ -19,10 +19,10 @@ class JobOfferDetailsController extends Controller
 
       if (count($JobOfferDetails) < 1) {
         // Return an error message if no record is found
-        return response()->json('No records founds !!', 404);
+        return response()->json(['responseMessage' => 'No records founds !!','responseCode' => 404]);
       } else {
         // Return Job Offer Details in JSON format
-        return response()->json($JobOfferDetails, 200);
+        return response()->json(['responseMessage' => $JobOfferDetails,'responseCode' => 200]);
       }
     }
 
@@ -56,53 +56,61 @@ class JobOfferDetailsController extends Controller
         // check if the user entered the net salary and / or allowances
         if(isset($net_salary) && isset($allowances)){
 
-        // Basic Salary Computation 
-        $basic_salary = 0;
+            // check if user entered a numeric value for the net salary and / or allowances
+            if((preg_match('/^-?(?:\d+|\d*\.\d+)$/', $net_salary)) && (preg_match('/^-?(?:\d+|\d*\.\d+)$/', $allowances))){
 
-        // Taxable Income Computation
-        $taxableINCOME = $basic_salary + $allowances;
+                // Basic Salary Computation 
+                $basic_salary = 0;
 
-        // Employee Pension Contribution Amount Computation
-        $emp_pension_cont_amt = 0;
+                // Taxable Income Computation
+                $taxableINCOME = $basic_salary + $allowances;
 
-        // Total Payee Tax Computation
-        $total_paye_tax = 0;
-        $taxableAMNT = $taxableINCOME - $emp_pension_cont_amt;
+                // Employee Pension Contribution Amount Computation
+                $emp_pension_cont_amt = 0;
 
-        // Net Salary Computation
-        $net_salary = ($net_salary + $allowances) - $total_paye_tax;
+                // Total Payee Tax Computation
+                $total_paye_tax = 0;
+                $taxableAMNT = $taxableINCOME - $emp_pension_cont_amt;
 
-        // Gross Salary Computation
-        $gross_salary = 0;
+                // Net Salary Computation
+                $net_salary = $net_salary;
 
-        // Employee Pension Amount Computation
-        $emp_pension_amt = 0;
+                // Gross Salary Computation
+                $gross_salary = 0;
 
-        // Total Allowance Amounts Computation
-        $total_allowance_amounts = 0;
+                // Employee Pension Amount Computation
+                $emp_pension_amt = 0;
 
-        // Store the young lady's desired net salary and allowances
-        $jobOfferDetails = new JobOfferDetails();
-        $jobOfferDetails->basic_salary = $basic_salary;
-        $jobOfferDetails->net_salary = $net_salary;
-        $jobOfferDetails->allowances = $allowances;
-        $jobOfferDetails->total_paye_tax = $total_paye_tax;
-        $jobOfferDetails->gross_salary = $gross_salary;
-        $jobOfferDetails->emp_pension_cont_amt = $emp_pension_cont_amt;
-        $jobOfferDetails->emp_pension_amt = $emp_pension_amt;
+                // Total Allowance Amounts Computation
+                $total_allowance_amounts = 0;
 
-        // Check if the data has been stored successfully
-        if ($jobOfferDetails->save()) {
-            return response()->json('Your desired net salary and allowances has been submitted successfully', 200);
+                // Store the young lady's desired net salary and allowances
+                $jobOfferDetails = new JobOfferDetails();
+                $jobOfferDetails->basic_salary = $basic_salary;
+                $jobOfferDetails->net_salary = $net_salary;
+                $jobOfferDetails->allowances = $allowances;
+                $jobOfferDetails->total_paye_tax = $total_paye_tax;
+                $jobOfferDetails->gross_salary = $gross_salary;
+                $jobOfferDetails->emp_pension_cont_amt = $emp_pension_cont_amt;
+                $jobOfferDetails->emp_pension_amt = $emp_pension_amt;
+
+                // Check if the data has been stored successfully
+                if ($jobOfferDetails->save()) {
+                    return response()->json(['responseMessage' => 'Your desired net salary and allowances has been submitted successfully','responseCode' => 200]);
+                } else {
+                    // If for some reason the young lady's data isn't stored return an error message.
+                    return response()->json(['responseMessage' => "Something went wrong. Your data wasn't stored",'responseCode' => 404]);
+                }
+
+            } else {
+                // Return an error msg if user does not enter a number
+                return response()->json(['responseMessage' => 'Please enter a numeric value ONLY for the net salary and / or the allowances','responseCode' => 200]);
+            }
+
         } else {
-        // If for some reason the young lady's data isn't stored return an error message.
-        return response()->json("Something went wrong. Your data wasn't stored", 404);
+            // Return an error msg if the user does not enter the net salary and/or the allowances
+            return response()->json(['responseMessage' => 'Please enter a value for the net salary and / or allowances.','responseCode' => 200]);
         }
-
-      } else {
-        // Return an error message if the user does not enter the net salary and/or the allowances
-        return response()->json('Please enter a value for the net salary and / or allowances.', 200);
-      }
 
     }
 
@@ -118,7 +126,7 @@ class JobOfferDetailsController extends Controller
          $JobOfferDetails = JobOfferDetails::findOrFail($id);
 
          // Return JobOfferDetails in json format
-         return response()->json($JobOfferDetails, 200);
+         return response()->json(['responseMessage' => $JobOfferDetails,'responseCode' => 200]);
      }
 
     /**
