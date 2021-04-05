@@ -84,7 +84,7 @@ class JobOfferDetailsController extends Controller
                 // Total Allowance Amounts Computation
                 $total_allowance_amounts = 0;
 
-                // Store the young lady's desired net salary and allowances
+                // Store the young lady's desired net salary, allowances and additional details
                 $jobOfferDetails = new JobOfferDetails();
                 $jobOfferDetails->basic_salary = $basic_salary;
                 $jobOfferDetails->net_salary = $net_salary;
