@@ -23,7 +23,7 @@
 
 5. Click on send to submit the young lady's data.
 
-## Guildelines to return the corresponding gross salary and additional details (Basic Salary, Total PAYE Tax, Employee Pension Contribution Amount and Employer Pension amount etc.)
+## Guildelines to return the corresponding gross salary and additional details (Basic Salary, Total PAYE Tax, Employee Pension Contribution Amount and Employee Pension amount etc.)
 
 1. Open Postman (or any other substitute application of your choice)
 
