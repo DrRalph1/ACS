@@ -56,7 +56,7 @@ class JobOfferDetailsController extends Controller
         // check if the user entered the net salary and / or allowances
         if(isset($net_salary) && isset($allowances)){
 
-        // Basic Salary Computation
+        // Basic Salary Computation 
         $basic_salary = 0;
 
         // Taxable Income Computation
