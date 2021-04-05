@@ -19,7 +19,7 @@ class JobOfferDetailsController extends Controller
 
       if (count($JobOfferDetails) < 1) {
         // Return an error message if no record is found
-        return response()->json(['responseMessage' => 'No records founds !!','responseCode' => 404]);
+        return response()->json(['responseMessage' => 'No records founds !!','responseCode' => 100]);
       } else {
         // Return Job Offer Details in JSON format
         return response()->json(['responseMessage' => $JobOfferDetails,'responseCode' => 200]);
@@ -99,17 +99,17 @@ class JobOfferDetailsController extends Controller
                     return response()->json(['responseMessage' => 'Your desired net salary and allowances has been submitted successfully','responseCode' => 200]);
                 } else {
                     // If for some reason the young lady's data isn't stored return an error message.
-                    return response()->json(['responseMessage' => "Something went wrong. Your data wasn't stored",'responseCode' => 404]);
+                    return response()->json(['responseMessage' => "Something went wrong. Your data wasn't stored",'responseCode' => 500]);
                 }
 
             } else {
                 // Return an error msg if user does not enter a number
-                return response()->json(['responseMessage' => 'Please enter a numeric value ONLY for the net salary and / or the allowances','responseCode' => 404]);
+                return response()->json(['responseMessage' => 'Please enter a numeric value ONLY for the net salary and / or the allowances','responseCode' => 400]);
             }
 
         } else {
             // Return an error msg if the user does not enter the net salary and/or the allowances
-            return response()->json(['responseMessage' => 'Please enter a value for the net salary and / or allowances.','responseCode' => 404]);
+            return response()->json(['responseMessage' => 'Please enter a value for the net salary and / or allowances.','responseCode' => 400]);
         }
 
     }
