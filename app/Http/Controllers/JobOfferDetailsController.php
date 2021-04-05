@@ -48,10 +48,13 @@ class JobOfferDetailsController extends Controller
         $input = $request->input();
 
         // Get Net Salary from the young lady
-        $net_salary = $input['net_salary'];
+        $net_salary = @$input['net_salary'];
 
         // Get Allowance from the young lady
-        $allowances = $input['allowances'];
+        $allowances = @$input['allowances'];
+
+        // check if the user entered the net salary and / or allowances
+        if(isset($net_salary) && isset($allowances)){
 
         // Basic Salary Computation
         $basic_salary = 0;
@@ -95,6 +98,12 @@ class JobOfferDetailsController extends Controller
         // If for some reason the young lady's data isn't stored return an error message.
         return response()->json("Something went wrong. Your data wasn't stored", 404);
         }
+
+      } else {
+        // Return an error message if the user does not enter the net salary and/or the allowances
+        return response()->json('Please enter a value for the net salary and / or allowances.', 200);
+      }
+
     }
 
     /**

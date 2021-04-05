@@ -2,7 +2,7 @@
 
 1. Git Clone the source codes from the repository
 
-2. Navigate to the project directory and <b>edit the .env file</b> to reflect your Database credetials
+2. Navigate to the project directory and <b>edit the .env file</b> to reflect your Database credentials
 
 3. Enter the command <b>php artisan migrate</b> to migrate the DB table into your database
 
