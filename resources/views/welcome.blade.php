@@ -48,7 +48,7 @@
 
         <br><br><br>
 
-        <b>## Guildelines to return the corresponding gross salary and additional details (Basic Salary, Total PAYE Tax, Employee Pension Contribution Amount and Employer Pension amount etc.)</b>
+        <b>## Guildelines to return the corresponding gross salary and additional details (Basic Salary, Total PAYE Tax, Employee Pension Contribution Amount and Employee Pension amount etc.)</b>
 
         <br><br>1. Open Postman (or any other substitute application of your choice)
 
