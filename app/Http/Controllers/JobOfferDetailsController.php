@@ -104,12 +104,12 @@ class JobOfferDetailsController extends Controller
 
             } else {
                 // Return an error msg if user does not enter a number
-                return response()->json(['responseMessage' => 'Please enter a numeric value ONLY for the net salary and / or the allowances','responseCode' => 200]);
+                return response()->json(['responseMessage' => 'Please enter a numeric value ONLY for the net salary and / or the allowances','responseCode' => 404]);
             }
 
         } else {
             // Return an error msg if the user does not enter the net salary and/or the allowances
-            return response()->json(['responseMessage' => 'Please enter a value for the net salary and / or allowances.','responseCode' => 200]);
+            return response()->json(['responseMessage' => 'Please enter a value for the net salary and / or allowances.','responseCode' => 404]);
         }
 
     }
